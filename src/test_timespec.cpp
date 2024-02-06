@@ -2,7 +2,9 @@
 #include <assert.h>
 #include "timespec.h"
 
-int main()
+void incr(unsigned int nLoops, double *pCounter);
+
+int main(int argc, char *argv[])
 {
 
     ///////////////////////////////////////////////////////
@@ -124,5 +126,35 @@ int main()
 
     printf("SUCESS :)\n");
 
+    ///////////////////////////////////////////////////////
+    //////////////////       TP1-C     ////////////////////
+    ///////////////////////////////////////////////////////
+
+    unsigned int nLoops = 0;
+    double counter = 0.0;
+    if (argc > 1)
+    {
+        nLoops = atoi(argv[1]);
+    }
+    else
+    {
+        nLoops = 1000000;
+    }
+
+    timespec tic = timespec_now();
+    incr(nLoops, &counter);
+    timespec toc = timespec_now();
+    dt = toc - tic;
+    printf("Counter: %f\n", counter);
+    printf("Execution time: %f\n", timespec_to_ms(dt) / 1000);
+
     return 0;
+}
+
+void incr(unsigned int nLoops, double *pCounter)
+{
+    for (unsigned int i = 0; i < nLoops; i++)
+    {
+        *pCounter += 1.0;
+    }
 }
