@@ -18,7 +18,7 @@ make
 
 ./test_pthread
 
-### Question awnsers
+### Question answers
 
 A) 
 
@@ -32,7 +32,7 @@ Although now the result is correct, using the mutexes to protect the variable cr
 
 ./test_timer
 
-### Question awnsers
+### Question answers
 
 B) 
 
