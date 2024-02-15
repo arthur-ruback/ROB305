@@ -34,9 +34,6 @@ private:
     pthread_mutex_t *pMutex;
 };
 
-void incr(unsigned int nLoops, double *pCounter);
-void incrP(unsigned int nLoops, double *pCounter, pthread_mutex_t *mutex);
-
 int main(int argc, char *argv[])
 {
 
@@ -125,22 +122,4 @@ int main(int argc, char *argv[])
     pthread_mutex_destroy(&mutex);
 
     return 0;
-}
-
-void incr(unsigned int nLoops, double *pCounter)
-{
-    for (unsigned int i = 0; i < nLoops; i++)
-    {
-        *pCounter += 1.0;
-    }
-}
-
-void incrP(unsigned int nLoops, double *pCounter, pthread_mutex_t *mutex)
-{
-    for (unsigned int i = 0; i < nLoops; i++)
-    {
-        pthread_mutex_lock(mutex);
-        *pCounter += 1.0;
-        pthread_mutex_unlock(mutex);
-    }
 }
