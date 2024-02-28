@@ -50,42 +50,47 @@ add_library(chrono
 )
 
 # Test file configuration
-add_executable(test_timespec
-    ${LIB_DIR}/test_timespec.cpp
+add_executable(TP1-ABC
+    ${LIB_DIR}/TP1-ABC.cpp
 )
 
-add_executable(test_pthread
-    ${LIB_DIR}/test_pthread.cpp
+add_executable(TP2
+    ${LIB_DIR}/TP2.cpp
 )
 
-add_executable(test_timer
-    ${LIB_DIR}/test_timer.cpp
+add_executable(TP3-B
+    ${LIB_DIR}/TP3-B.cpp
 )
 
-add_executable(test_classpthread
-    ${LIB_DIR}/test_classpthread.cpp
+add_executable(TP4-A
+    ${LIB_DIR}/TP4-A.cpp
 )
 
-add_executable(test_mutex
-    ${LIB_DIR}/test_mutex.cpp
+add_executable(TP4-B
+    ${LIB_DIR}/TP4-B.cpp
 )
 
-add_executable(test_semaphore
-    ${LIB_DIR}/test_semaphore.cpp
+add_executable(TP4-C
+    ${LIB_DIR}/TP4-C.cpp
 )
 
-add_executable(test_chrono
-    ${LIB_DIR}/test_chrono.cpp
+add_executable(TP3-A
+    ${LIB_DIR}/TP3-A.cpp
+)
+
+add_executable(TP3-C
+    ${LIB_DIR}/TP3-C.cpp
 )
 
 # Link the library to the test executable
-target_link_libraries(test_timespec timespec timer)
-target_link_libraries(test_timer timespec timer)
-target_link_libraries(test_pthread timespec pthread)
-target_link_libraries(test_classpthread timespec pthread posix_thread thread)
-target_link_libraries(test_mutex timespec pthread posix_thread thread mutex)
-target_link_libraries(test_semaphore timespec pthread posix_thread thread mutex semaphore)
-target_link_libraries(test_chrono timespec chrono)
+target_link_libraries(TP1-ABC timespec timer)
+target_link_libraries(TP3-B timespec timer)
+target_link_libraries(TP2 timespec pthread)
+target_link_libraries(TP4-A timespec pthread posix_thread thread)
+target_link_libraries(TP4-B timespec pthread posix_thread thread mutex)
+target_link_libraries(TP4-C timespec pthread posix_thread thread mutex semaphore)
+target_link_libraries(TP3-A timespec chrono)
+target_link_libraries(TP3-C timer)
 
 target_link_libraries(timer PUBLIC timespec PRIVATE rt)
 target_link_libraries(posix_thread PUBLIC timespec PRIVATE pthread)
@@ -102,13 +107,14 @@ target_include_directories(semaphore PUBLIC ${LIB_DIR})
 target_include_directories(chrono PUBLIC ${LIB_DIR})
 
 # Add the library directory to the test include path
-target_include_directories(test_timespec PRIVATE ${LIB_DIR})
-target_include_directories(test_timer PRIVATE ${LIB_DIR})
-target_include_directories(test_pthread PRIVATE ${LIB_DIR})
-target_include_directories(test_classpthread PRIVATE ${LIB_DIR})
-target_include_directories(test_mutex PRIVATE ${LIB_DIR})
-target_include_directories(test_semaphore PRIVATE ${LIB_DIR})
-target_include_directories(test_chrono PRIVATE ${LIB_DIR})
+target_include_directories(TP1-ABC PRIVATE ${LIB_DIR})
+target_include_directories(TP3-B PRIVATE ${LIB_DIR})
+target_include_directories(TP2 PRIVATE ${LIB_DIR})
+target_include_directories(TP4-A PRIVATE ${LIB_DIR})
+target_include_directories(TP4-B PRIVATE ${LIB_DIR})
+target_include_directories(TP4-C PRIVATE ${LIB_DIR})
+target_include_directories(TP3-A PRIVATE ${LIB_DIR})
+target_include_directories(TP3-C PRIVATE ${LIB_DIR})
 
 # Set the output directories for the library and test executable
 set_target_properties(timespec PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
@@ -119,10 +125,11 @@ set_target_properties(mutex PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR}/lib
 set_target_properties(semaphore PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
 set_target_properties(chrono PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${BUILD_DIR}/lib)
 
-set_target_properties(test_timespec PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
-set_target_properties(test_timer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
-set_target_properties(test_pthread PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
-set_target_properties(test_classpthread PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
-set_target_properties(test_mutex PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
-set_target_properties(test_semaphore PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
-set_target_properties(test_chrono PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP1-ABC PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP3-B PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP4-A PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP4-B PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP4-C PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP3-A PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})
+set_target_properties(TP3-C PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${BUILD_DIR})

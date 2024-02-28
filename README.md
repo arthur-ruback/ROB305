@@ -10,13 +10,7 @@ cmake ..
 
 make
 
-## For TP1
-
-./test_timespec
-
 ## For TP2
-
-./test_pthread
 
 ### Question answers
 
@@ -29,8 +23,6 @@ B)
 Although now the result is correct, using the mutexes to protect the variable creates some overhead as it makes numerous call to the kernel to get and release the mutex. Therefore we observe that the execution time has increased significantly.
 
 ## For TP3
-
-./test_timer
 
 ### Question answers
 
