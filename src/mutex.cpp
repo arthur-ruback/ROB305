@@ -38,10 +38,10 @@ void Mutex::Monitor::wait()
     pthread_cond_wait(&mutex.condId, &mutex.id);
 }
 
-bool Mutex::Monitor::wait(double timeout)
+bool Mutex::Monitor::wait(double timeout_ms)
 {
     timespec ts = timespec_now();
-    ts = ts + timespec_from_ms(timeout * 1000);
+    ts = ts + timespec_from_ms(timeout_ms);
     return pthread_cond_timedwait(&mutex.condId, &mutex.id, &ts) == 0;
 }
 

@@ -35,5 +35,6 @@ void *Thread::call_run(void *arg)
 {
     Thread *thread = static_cast<Thread *>(arg);
     thread->run();
+    clock_gettime(CLOCK_REALTIME, &thread->end_ts);
     return thread;
 }
