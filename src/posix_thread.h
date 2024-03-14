@@ -35,4 +35,6 @@ protected:
     pthread_t posixId;
     pthread_attr_t posixAttr;
     bool isActive;
+    int myPolicy;
+    int myPriority;
 };

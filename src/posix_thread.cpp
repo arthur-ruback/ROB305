@@ -1,6 +1,6 @@
 #include "posix_thread.h"
 
-PosixThread::PosixThread() : posixId(0), isActive(false)
+PosixThread::PosixThread() : posixId(0), isActive(false), myPolicy(SCHED_OTHER), myPriority(1)
 {
     pthread_attr_init(&posixAttr);
 }
@@ -19,6 +19,8 @@ PosixThread::PosixThread(pthread_t posixId) : posixId(posixId), isActive(true)
 
     pthread_attr_setschedparam(&posixAttr, &schedParams);
     pthread_attr_setschedpolicy(&posixAttr, policy);
+    myPolicy = policy;
+    myPriority = schedParams.sched_priority;
 }
 
 PosixThread::~PosixThread()
@@ -33,6 +35,7 @@ void PosixThread::start(ThreadPosix threadFunc, void *threadArg)
 {
     pthread_create(&posixId, &posixAttr, threadFunc, threadArg);
     isActive = true;
+    setScheduling(myPolicy, myPriority);
 }
 
 void PosixThread::join()
@@ -61,6 +64,12 @@ bool PosixThread::setScheduling(int policy, int priority)
         sched_param schedParams;
         schedParams.sched_priority = priority;
         return pthread_setschedparam(posixId, policy, &schedParams) == 0;
+    }
+    // save for when the thread is activated
+    else
+    {
+        myPolicy = policy;
+        myPriority = priority;
     }
     return false;
 }

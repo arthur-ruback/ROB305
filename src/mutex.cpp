@@ -1,10 +1,14 @@
 #include "mutex.h"
 
-Mutex::Mutex()
+Mutex::Mutex(bool isInversionSafe)
 {
     pthread_mutexattr_t attr;
     pthread_mutexattr_init(&attr);
     pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_ERRORCHECK);
+    if (isInversionSafe)
+    {
+        pthread_mutexattr_setprotocol(&attr, PTHREAD_PRIO_INHERIT);
+    }
     pthread_mutex_init(&id, &attr);
     pthread_cond_init(&condId, nullptr);
     pthread_mutexattr_destroy(&attr);

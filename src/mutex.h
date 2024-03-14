@@ -14,7 +14,7 @@ private:
     pthread_cond_t condId;
 
 public:
-    Mutex();
+    Mutex(bool isInversionSafe = false);
     ~Mutex();
 
 private:

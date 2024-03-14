@@ -60,11 +60,9 @@ timespec timespec_wait(const timespec &delay_ts)
         case EFAULT:
             std::cerr << "Problem with copying information from user space, returning remaining time" << std::endl;
             break;
-
         case EINTR:
             std::cerr << "The pause has been interrupted by a signal that was delivered to the thread, returning remaining time" << std::endl;
             break;
-
         case EINVAL:
             std::cerr << "The value in the tv_nsec  field  was  not  in  the  range  0  to 999999999 or tv_sec was negative" << std::endl;
             break;
