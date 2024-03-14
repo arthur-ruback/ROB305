@@ -3,7 +3,6 @@
 #include <sys/resource.h>
 #include <unistd.h>
 #include <sched.h>
-#include <errno.h>
 
 #include "cpu_loop.h"
 #include "thread.h"
@@ -95,11 +94,11 @@ int main(int argc, char *argv[])
     // get runtime argument for the mutex
     if (argc != 2)
     {
-        std::cerr << "Usage: " << argv[0] << " <inversion safe mutex> (true/false)" << std::endl;
+        std::cerr << "Usage: " << argv[0] << " <inversion safe mutex> (prio_inversion_safe/prio_inversion_non_safe)" << std::endl;
         return 1;
     }
 
-    bool inversionSafe = std::string(argv[1]) == "true";
+    bool inversionSafe = std::string(argv[1]) == "prio_inversion_safe";
 
     // binding this process to the first CPU
     cpu_set_t mask;
