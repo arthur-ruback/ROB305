@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <mutex>
+#include <vector>
 #include "timespec.h"
 
 void incr(unsigned int nLoops, double *pCounter);
@@ -62,7 +63,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    pthread_t threads[nTasks];
+    std::vector<pthread_t> threads(nTasks);
     pthread_mutex_t mutex;
     pthread_mutex_init(&mutex, NULL);
 

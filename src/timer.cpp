@@ -56,7 +56,7 @@ void Timer::stop()
     }
 }
 
-void Timer::call_callback(int signo, siginfo_t *si, void *user_data)
+void Timer::call_callback(int, siginfo_t *si, void *)
 {
     Timer *timer = (Timer *)si->si_value.sival_ptr;
     if (timer)

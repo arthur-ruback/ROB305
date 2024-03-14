@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Set the project name and language
-project(timespec_library CXX)
+project(rob305 CXX)
 
 # Set the source and build directories
 set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
@@ -12,6 +12,9 @@ set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Set the compiler flags
+add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 # Library configuration
 add_library(timespec
